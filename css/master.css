@@ -1,0 +1,17 @@
+body
+{
+	background: url("../img/binding_dark.png");
+}
+
+.content
+{
+	margin: 1em auto;
+	padding: 1em 1em;
+	background: url("../img/textured_paper.png");
+	color: #000;
+	width:50%;
+	-moz-border-radius: 10px; /* Firefox */  
+	-webkit-border-radius: 10px; /* Safari, Chrome */  
+	border-radius: 10px; /* CSS3 */  
+}
+
