@@ -13,5 +13,20 @@ body
 	-moz-border-radius: 10px; /* Firefox */  
 	-webkit-border-radius: 10px; /* Safari, Chrome */  
 	border-radius: 10px; /* CSS3 */  
+	min-width: 400px;
 }
 
+.generation
+{
+	opacity: .9;
+	background-color: #fefefe;
+	-moz-border-radius: 10px; /* Firefox */  
+	-webkit-border-radius: 10px; /* Safari, Chrome */  
+	border-radius: 10px; /* CSS3 */ 
+	padding: .2em;
+}
+
+.generation:hover
+{
+	background-color: #f7f7f7;
+}
