@@ -288,7 +288,9 @@ $(document).ready(function() {
 	var json = JSON.stringify(cityArray);
 	$("#cityArray").val(json);
 
-
+	$(".startGA").click(function () {
+		startGA();
+	});
 });
 
 

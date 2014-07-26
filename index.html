@@ -9,42 +9,88 @@
         <title>Genetic Algorithm</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
         <link href="css/master.css" rel="stylesheet" media="screen">
-        <script src="js/jquery-1.8.2.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/ga.js"></script>
     </head>
     <body>
         <div class="content">
-            <h1>Genetic Algorithm for Traveling Salesman Problem</h1>
-            <div class="config">
-                <form>
-                    Population Size: <input type="text" name="popSize" value="100"><br />
-                    Generations: <input type="text" name="generations" value="200"><br />
-                    Elistists: <input type="text" name="elitists" value="2"><br />
-                    Alleles: <input type="text" name="alleles" value="7"><br />
-                    Min Allele Value: <input type="text" name="minAllele" value="1"><br />
-                    Max Allele Value: <input type="text" name="maxAllele" value="7"><br />
-                    Extra Alleles: <input type="text" name="extraAlleles" value="2"><br />
-                    Mutation Probability: <input type="text" name="mutationProb" value="20"><br />
-                    Stat Frequency: <input type="text" name="statFreq" value="10"><br />
-                    Wrong Route Value: <input type="text" name="wrongRoute" value="2000"><br />
-                    City Mapping: <textarea rows="10" class="input-xlarge" name="cityArray" id="cityArray"></textarea><br />
-                    <a class="btn" href="javascript: startGA();">Start</a>
-                </form> 
+            <div class="wrapper row clearfix">
+                <div class="col-md-12">
+                    <div class="config col-md-6">
+                        <form >
+                            <fieldset>
+                                <legend>Genetic Algorithm for Traveling Salesman Problem</legend>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Population Size: </label>
+                                        <input type="text" name="popSize" class="form-control" value="100" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Generations: </label>
+                                        <input type="text" name="generations" class="form-control" value="200" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Elistists: </label>
+                                        <input type="text" name="elitists" class="form-control" value="2" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Alleles: </label>
+                                        <input type="text" name="alleles" class="form-control" value="7" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Min Allele Value: </label>
+                                        <input type="text" name="minAllele" class="form-control" value="1" />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Max Allele Value: </label>
+                                        <input type="text" name="maxAllele" class="form-control" value="7" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Extra Alleles: </label>
+                                        <input type="text" name="extraAlleles" class="form-control" value="2" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mutation Probability: </label>
+                                        <input type="text" name="mutationProb" class="form-control" value="20" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Stat Frequency: </label>
+                                        <input type="text" name="statFreq" class="form-control" value="10" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Wrong Route Value: </label>
+                                        <input type="text" name="wrongRoute" class="form-control" value="2000" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>City Mapping: </label>
+                                    <textarea rows="10" class="form-control" name="cityArray" id="cityArray"></textarea>
+                                    <button type="button" class="btn btn-primary btn-block startGA"><i class="fa fa-cogs"></i> Start</button>
+                                </div>
+                            </fieldset>
+                        </form> 
+                  <!--       <p>The minimum that I have found for my cities was 286.  My cities are:<br />
+                        City 1: Flint <br />
+                        City 2: Saginaw<br />
+                        City 3: Marlette<br />
+                        City 4: Royal Oak<br />
+                        City 5: Troy<br />
+                        City 6: Pontiac<br />
+                        City 7: Grand Rapids<br /></p> -->
 
+                    </div>
+                    <hr />
+                    <div id="stats" class="col-md-6"></div>
+                </div>
             </div>
-            <p>The minimum that I have found for my cities was 286.  My cities are:<br />
-            City 1: Flint <br />
-            City 2: Saginaw<br />
-            City 3: Marlette<br />
-            City 4: Royal Oak<br />
-            City 5: Troy<br />
-            City 6: Pontiac<br />
-            City 7: Grand Rapids<br /></p>
-            <hr />
-            <div id="stats"></div>
         </div>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/ga.js"></script>
     </body>
 </html>
