@@ -284,7 +284,7 @@ var cityArray = {"11":1000000,"12":37,"21":37,"13":55,"31":55,"14":57,"41":57,
 					"56":12,"65":12,"57":157,"75":157,"66":1000000,"67":152,"76":152,
 					"77":1000000};
 
-$(document).ready(function() {
+$(function() {
 	var json = JSON.stringify(cityArray);
 	$("#cityArray").val(json);
 
@@ -311,47 +311,36 @@ function startGA()
 			//Do error checking/setting on submit later
 			finished = false;
 
-			var popSize = 200;
-			var generations = 500;
-			var elitists = 2;
-			var alleles = 7;
-			var minAllele = 1;
-			var maxAllele = 7;
-			var extraAlleles = 2;
-			var mutationProb = 20;
-			var statFreq = 10;
-			wrongRoute = 2000;
 			//Decent starting result = 100,100,2,7,1,7,2,20,10,2000
-			//If take out elitists, fun resutls of fluctuating lowest
-			popSize = parseInt($("input[name=popSize]").val());
-			generations = parseInt($("input[name=generations]").val());
-			elitists = parseInt($("input[name=elitists]").val());
-			alleles = parseInt($("input[name=alleles]").val());
-			minAllele = parseInt($("input[name=minAllele]").val());
-			maxAllele = parseInt($("input[name=maxAllele]").val());
-			extraAlleles = parseInt($("input[name=extraAlleles]").val());
-			mutationProb = parseInt($("input[name=mutationProb]").val());
-			statFreq = parseInt($("input[name=statFreq]").val());
-			wrongRoute = parseInt($("input[name=wrongRoute]").val());
+			//If take out elitists, fun results of fluctuating lowest
+			var popSize = parseInt($("input[name=popSize]").val()) || 200,
+				generations = parseInt($("input[name=generations]").val()) || 500,
+				elitists = parseInt($("input[name=elitists]").val()) || 2,
+				alleles = parseInt($("input[name=alleles]").val()) || 7,
+				minAllele = parseInt($("input[name=minAllele]").val()) || 1,
+				maxAllele = parseInt($("input[name=maxAllele]").val()) || 7,
+				extraAlleles = parseInt($("input[name=extraAlleles]").val()) || 2,
+				mutationProb = parseInt($("input[name=mutationProb]").val()) || 20,
+				statFreq = parseInt($("input[name=statFreq]").val()) || 10;
+
+			wrongRoute = parseInt($("input[name=wrongRoute]").val()) || 2000;
+
 			cityArray = JSON.parse($("#cityArray").val());
 
 			//popSize, elitists, alleles, min allele, max allele, extra alleles, mutation prob (lower is more frequent)
 			var populationObj = new Population(popSize,elitists,alleles,minAllele,maxAllele,extraAlleles,mutationProb);
-			//Seems like the more likely a mutation is, the better end solution is come up, here is a good setup:new Population(100,2,7,1,7,3,5).
+			//Seems like the more likely a mutation is, the better end solution comes up, here is a good setup:new Population(100,2,7,1,7,3,5).
 
 			//https://maps.google.com/maps?saddr=grand+rapids,+mi&daddr=flint,+mi+to:saginaw,+mi+to:marlette,+mi+to:pontiac,+mi+to:troy,+mi+to:royal+oak,+mi&hl=en&ll=43.185153,-84.094849&spn=3.468543,3.12561&sll=42.835696,-82.8479&sspn=6.976182,6.251221&geocode=FaCRjwIdCs_k-ikVKFC7YFQYiDHQqNMby6qTpQ%3BFa9RkAId4AcD-ykXc5el-3gjiDFraDOOCTqFwQ%3BFU6HlgIdKQP_-imvWOeGQcIjiDGs9a57bZTjKQ%3BFfgdlQId5EsM-yn3S2P8NzEkiDFDK22v3yi_Fw%3BFUqeigIdWRQJ-ylTXySTyb8kiDEKO-l09TJ5Ew%3BFRUcigIdljsL-ykTzIsxCsQkiDGnd5F-xgBLtA%3BFYhWiAIdOFAL-yn3K81s-cUkiDEQM8rvQdMPBw&t=h&mra=ls&z=8
 			//284 min (I think 286 in my program due to rounding)
-
-
 			
-			$(document).ready(function() {
-
 			$("#stats").html('');
 			$("#stats").append("<p>"+ "Every "+ statFreq +" generations (* means new lowest or highest)" +"</p>");
 
 			var stats = populationObj.getStats();
 			$("#stats").append("<p class='generation'>Generation: "+ (1) + " " + stats +"</p>");
 			
+			var statHTML = "";
 
 			for (var i = 0; i < generations; i++) 
 			{
@@ -362,7 +351,7 @@ function startGA()
 					if((i+1)%statFreq==0)
 					{
 						var stats = populationObj.getStats();
-						$("#stats").append("<p class='generation'>Generation: "+ (i + 1) + " " + stats +"</p>");
+						statHTML += "<p class='generation'>Generation: "+ (i + 1) + " " + stats +"</p>";
 					}	
 				}
 				catch (ex)
@@ -372,9 +361,9 @@ function startGA()
 				
 			}
 
-			finished = true;
+			$("#stats").append(statHTML);
 
-			});
+			finished = true;
 		}
 
 	}
@@ -383,9 +372,3 @@ function startGA()
 		alert("Something went wrong.  Oops.");
 	}
 }
-
-
-$(function(){
-
-
-});
